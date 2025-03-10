@@ -4,8 +4,8 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Header from './Header';
+import  {API_URL} from "./config";
 import axios from "axios";
-
 import { useState } from 'react';
 
 
@@ -22,7 +22,7 @@ function Login() {
       password: password,
     };
 
-    axios.post("http://127.0.0.1:8000/api/login", data)
+    axios.post("${API_URL}/api/login", data)
       .then(res => {
         alert("Login successful!");
        
