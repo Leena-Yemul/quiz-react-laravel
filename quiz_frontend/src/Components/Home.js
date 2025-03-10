@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom'; 
 import { useState,useEffect } from 'react';
+import  {API_URL} from "./config";
 import axios from 'axios';
 
 const Home = () => {
@@ -25,7 +26,7 @@ const Home = () => {
   
   
     const getdata = () => {
-        axios.get('http://127.0.0.1:8000/api/Course')
+        axios.get('${API_URL}/api/Course')
             .then(res => {
                 setFetch(res.data);
             })
@@ -111,7 +112,7 @@ const Home = () => {
         <Card className="shadow-lg rounded-3 border-0" style={{ width: '100%' }}>
           <Card.Img 
             variant="top" 
-            src={`http://127.0.0.1:8000/images/${item.image}`} 
+            src={`${API_URL}/images/${item.image}`} 
             alt={item.name}
             style={{ height: '200px', objectFit: 'cover' }}
           />
