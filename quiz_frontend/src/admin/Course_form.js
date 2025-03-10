@@ -3,6 +3,7 @@ import Header from './Header';
 import Form from 'react-bootstrap/Form';
 import Container from "react-bootstrap/Container";
 import Button from 'react-bootstrap/Button';
+import  {API_URL} from "./config";
 import axios from 'axios';
 
 const CourseForm = () => {
@@ -18,7 +19,7 @@ const CourseForm = () => {
       formData.append("image", image);
     }
 
-    axios.post("http://127.0.0.1:8000/api/Course", formData, {
+    axios.post("${API_URL}/api/Course", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
