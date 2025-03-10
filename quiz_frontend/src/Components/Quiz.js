@@ -3,6 +3,8 @@ import { useParams} from "react-router-dom";
 import axios from "axios";
 import { Container, Card, Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import  {API_URL} from "./config";
+
 import Header from "./Header";
 
 const Quiz = () => {
@@ -25,7 +27,7 @@ const Quiz = () => {
   useEffect(() => {
     if (user) {
       axios
-        .get(`http://127.0.0.1:8000/api/check-quiz-attempt`, {
+        .get(`${API_URL}/api/check-quiz-attempt`, {
           params: { user_id: user.id, course_id: id },
         })
         .then((res) => {
@@ -42,7 +44,7 @@ const Quiz = () => {
   // Fetch quiz questions if not attempted
   const fetchQuestions = () => {
     axios
-      .get(`http://127.0.0.1:8000/api/Question/${id}`)
+      .get(`${API_URL}/api/Question/${id}`)
       .then((res) => setFetch(res.data))
       .catch((err) => console.log(err));
   };
@@ -80,7 +82,7 @@ const Quiz = () => {
     };
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/submit-quiz", submissionData);
+      const response = await axios.post("${API_URL}/api/submit-quiz", submissionData);
       alert("Your answers have been submitted successfully!");
       console.log(response.data);
       window.location.href = "/";
