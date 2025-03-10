@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { FaUserEdit } from "react-icons/fa";
 import { Row, Col, Container, Card, Button } from "react-bootstrap";
 import Header from "./Header";
+import  {API_URL} from "./config";
 import "./style.css";
 
 
@@ -16,7 +17,7 @@ const Profile = () => {
   useEffect(() => {
     // Fetch user details
     axios
-      .get(`http://127.0.0.1:8000/api/user/${id}`)
+      .get(`${API_URL}/api/user/${id}`)
       .then((res) => {
         console.log("User Data:", res.data);
         setUserData(res.data);
@@ -25,7 +26,7 @@ const Profile = () => {
 
     // Fetch quiz performance
     axios
-      .get(`http://127.0.0.1:8000/api/user/${id}/quiz-performance`)
+      .get(`${API_URL}/api/user/${id}/quiz-performance`)
       .then((res) => {
         console.log("Quiz Performance Data:", res.data);
         setQuizData(res.data);
@@ -34,7 +35,7 @@ const Profile = () => {
   }, [id]);
   const handleDelete = (courseId) => {
     axios
-      .delete(`http://127.0.0.1:8000/api/delete/${courseId}`)
+      .delete(`${API_URL}/api/delete/${courseId}`)
       .then((res) => {
         console.log(res.data.message);
         setQuizData(quizData.filter((quiz) => quiz.course_id !== courseId)); // Remove deleted quiz from UI
