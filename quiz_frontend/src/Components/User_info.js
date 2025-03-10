@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
   import { useParams } from 'react-router-dom';
+import  {API_URL} from "./config";
 import Header from './Header';
 import axios from "axios";
 
@@ -19,7 +20,7 @@ function User_info() {
   
 
   const getdata = () => {
-    axios.get(`http://127.0.0.1:8000/api/Reg/` + id)
+    axios.get(`${API_URL}/api/Reg/` + id)
       .then(res => {
         const data = res.data;
         setName(data.name);
@@ -48,7 +49,7 @@ function User_info() {
 //     }
 //      console.log(data);
 
-//      axios.put(`http://127.0.0.1:8000/api/Reg/${id}`, data, {
+//      axios.put(`${API_URL}/api/Reg/${id}`, data, {
 //       headers: {
 //         "Content-Type": "application/json",
 //       },
@@ -78,7 +79,7 @@ function handleSubmit(event) {
   if (image) {
     formData.append("image", image);
   }
-  axios.post(`http://127.0.0.1:8000/api/update`, formData, {
+  axios.post(`${API_URL}/api/update`, formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
