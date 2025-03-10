@@ -4,6 +4,7 @@ import axios from 'axios';
 import Header from './Header';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
+import  {API_URL} from "./config";
 
 import { useParams } from "react-router-dom";
 
@@ -13,7 +14,7 @@ const Status = () => {
   // Fetch courses data from API
   useEffect(() => {
     axios
-    .get(`http://127.0.0.1:8000/api/user/${id}/quiz-performance`)
+    .get(`${API_URL}/api/user/${id}/quiz-performance`)
     .then((res) => {
       console.log("Quiz Performance Data:", res.data);
       setQuizData(res.data);
@@ -51,7 +52,7 @@ const Status = () => {
                 <tr>
                     <td>{item.course_id}</td>
                     <td>{item.course_name}</td>
-                    <td><img src={`http://127.0.0.1:8000/images/${item.course_image}`}  style={{ height: '50px',width: '100px', objectFit: 'cover' }}/></td>
+                    <td><img src={`${API_URL}/images/${item.course_image}`}  style={{ height: '50px',width: '100px', objectFit: 'cover' }}/></td>
                     <td>{item.question_count}</td>
                     <td>{item.correct_answers_count}</td>
                     <td>{item.incorrect_answers_count}</td>
