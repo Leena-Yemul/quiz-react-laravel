@@ -4,6 +4,7 @@ import axios from 'axios';
 import Header from './Header';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
+import  {API_URL} from "./config";
 import Button from 'react-bootstrap/Button';
 
 const CourseTable = () => {
@@ -13,7 +14,7 @@ const CourseTable = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:8000/api/Course");
+        const res = await axios.get("${API_URL}/api/Course");
         setCourses(res.data);
       } catch (error) {
         console.error("Error fetching course data:", error);
@@ -49,7 +50,7 @@ const CourseTable = () => {
                     <tr key={index}>
                       <td>{course.id}</td>
                       <td>{course.name}</td>
-                      <td><img src={`http://127.0.0.1:8000/images/${course.image}`}  style={{ height: '50px',width: '100px', objectFit: 'cover' }}/></td>
+                      <td><img src={`${API_URL}/images/${course.image}`}  style={{ height: '50px',width: '100px', objectFit: 'cover' }}/></td>
                       <td>{course.description}</td>
                     </tr>
                   ))
