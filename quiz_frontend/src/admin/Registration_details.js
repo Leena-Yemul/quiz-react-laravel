@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import  {API_URL} from "./config";
 
 const RegistrationDetails = () => {
   const [registrations, setRegistrations] = useState([]);
@@ -12,7 +13,7 @@ const RegistrationDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:8000/api/Reg");
+        const res = await axios.get("${API_URL}/api/Reg");
         setRegistrations(res.data);
       } catch (err) {
         console.error("Error fetching data:", err);
@@ -49,7 +50,7 @@ const RegistrationDetails = () => {
                       <td>{reg.email}</td>
                       <td>{reg.address}</td>
                       <td>{reg.contact}</td>
-                      <td><img src={`http://127.0.0.1:8000/images/${reg.image}`}  style={{ height: '50px',width: '100px', objectFit: 'cover' }}/></td>
+                      <td><img src={`${API_URL}/images/${reg.image}`}  style={{ height: '50px',width: '100px', objectFit: 'cover' }}/></td>
                       <td>
                         <Link to={`/status/${reg.id}`}>
                           <Button className="custom-btn">Status</Button>
