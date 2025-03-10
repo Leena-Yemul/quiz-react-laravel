@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Container, Card, Row} from 'react-bootstrap';
 import Header from './Header';
+import  {API_URL} from "./config";
 
 const QuizStatus = () => {
   const { id, course_id } = useParams();
@@ -22,7 +23,7 @@ const QuizStatus = () => {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/api/user/${id}/quiz-status/${course_id}`)
+      .get(`${API_URL}/api/user/${id}/quiz-status/${course_id}`)
       .then((res) => {
         setStatusData(res.data);
         setLoading(false);
