@@ -4,6 +4,8 @@ import axios from 'axios';
 import Header from './Header';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
+import  {API_URL} from "./config";
+
 import Button from 'react-bootstrap/Button';
 
 const QuestionTable = () => {
@@ -13,7 +15,7 @@ const QuestionTable = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:8000/api/Question");
+        const res = await axios.get("${API_URL}/api/Question");
         setQuestions(res.data);
       } catch (error) {
         console.error("Error fetching questions:", error);
