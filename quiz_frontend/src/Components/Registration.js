@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Header from './Header';
 import axios from "axios";
+import  {API_URL} from "./config";
 import React, { useEffect, useState } from 'react';
 
 function Registration() {
@@ -37,7 +38,7 @@ function Registration() {
     }
     console.log(formData);
 
-    axios.post("http://127.0.0.1:8000/api/Reg", formData, {
+    axios.post("${API_URL}/api/Reg", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
